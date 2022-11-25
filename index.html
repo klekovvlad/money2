@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <header class="header">
+        <div class="container">
+            <div class="header__wrapper">
+                <div class="header__logo">
+
+                </div>
+                <nav class="header__nav">
+
+                </nav>
+                <div class="header__buttons">
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="main__wrapper">
+                <h2>Только <span class="date_today"></span></h2>
+                <h1>Получи займ от 0% даже с просрочками</h1>
+            </div>
+
+            <div class="calc">
+                <h4>Рассчитай свое индивидуальное предложение</h4>
+                <h5>Выбери тариф</h5>
+                <ul class="calc_nav">
+                    <li class="calc-btn check">Бесплатный</li>
+                    <input type="hidden" class="persent-free" value="0"> <!--Процент бесплатного тарифа-->
+                    <li class="calc-btn">Продвинутый</li>
+                    <input type="hidden" class="persent-med" value="0.25"> <!--Процент продвинутого тарифа-->
+                    <li class="calc-btn">Профессиональный</li>
+                    <input type="hidden" class="persent-pro" value="0.5"> <!--Процент профессионального тарифа-->
+                </ul>
+                <h5>Введи необходимую сумму</h5>
+                <input type="text" class="money">
+                <div class="calc__info">
+                    <span class="calc__text">Сумма займа: <span class="calc_money"></span> руб.</span> 
+                    <span class="calc__text">Проценты: от <span class="calc_persent"></span>%</span>
+                    <span class="calc__text">Общая сумма займа: от <span class="calc_all"></span> руб.</span>
+                    <button class="main-btn">Получить</button>
+                    <span class="trigger">*Первоначальный рассчет</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="manual">
+        <div class="container">
+            <h3>Как безопасно получить займ</h3>
+            <div class="manual__wrapper">
+                <div class="manual__item">
+                    <div class="manual__item-img">
+                        <img src="img/icons/anketa.png" alt="">
+                        <span class="circle circle-first">01</span>
+                    </div>
+                    <span class="manual__header">Заполните анкету</span>
+                </div>
+                <div class="manual__item">
+                    <div class="manual__item-img">
+                        <img src="img/icons/send.png" alt="">
+                        <span class="circle circle-second">02</span>
+                    </div>
+                    <span class="manual__header">Отправьте заявку</span>
+                </div>
+                <div class="manual__item">
+                    <div class="manual__item-img">
+                        <img src="img/icons/money.png" alt="">
+                        <span class="circle circle-third">03</span>
+                    </div>
+                    <span class="manual__header">Получите деньги</span>
+                </div>
+            </div>
+            <div class="manual__button">
+                <a href="#" class="main-btn">Заполнить анкету</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="table">
+        <div class="container">
+            <h3>Онлайн-табло решений по заявкам</h3>
+            <div class="table__wrapper">
+                <div class="table__row">
+                    <span class="table__head">Заемщик</span>
+                    <span class="table__head">Сумма займа</span>
+                    <span class="table__head">Этап обработки заявки</span>
+                    <span class="table__head">Условия займа</span>
+                </div>
+                <div class="table__row">
+                    <div class="table__item">И***ов И.В.</div>
+                    <div class="table__item">30 000 руб.</div>
+                    <div class="table__process">
+                        <div class="table__process-text">Получение денег</div>
+                        <div class="table__process-icons">
+                            <div class="icon"></div>
+                            <div class="icon"></div>
+                        </div>
+                    </div>
+                    <div class="table__item">
+                        <span class="time">30 дней</span>
+                        <span class="percent">Ставка: 0,5%</span>
+                    </div>
+                </div>
+                <div class="table__row">
+                    <div class="table__item">Иг***ов И.В.</div>
+                    <div class="table__item">50 000 руб.</div>
+                    <div class="table__process">
+                        <div class="table__process-text">Получение денег</div>
+                        <div class="table__process-icons">
+                            <div class="icon"></div>
+                            <div class="icon"></div>
+                            <div class="icon"></div>
+                        </div>
+                    </div>
+                    <div class="table__item">
+                        <span class="time">30 дней</span>
+                        <span class="percent">Ставка: 0%</span>
+                    </div>
+                </div>
+                <div class="table__row">
+                    <div class="table__item">Пет***ов С.И.</div>
+                    <div class="table__item">80 000 руб.</div>
+                    <div class="table__process">
+                        <div class="table__process-text">Получение денег</div>
+                        <div class="table__process-icons">
+                            <div class="icon"></div>
+                        </div>
+                    </div>
+                    <div class="table__item">
+                        <span class="time">30 дней</span>
+                        <span class="percent">Ставка: 0,25%</span>
+                    </div>
+                </div>
+                <div class="table__row">
+                    <div class="table__item">Се***ова О.М.</div>
+                    <div class="table__item">10 000 руб.</div>
+                    <div class="table__process">
+                        <div class="table__process-text">Получение денег</div>
+                        <div class="table__process-icons">
+                        </div>
+                    </div>
+                    <div class="table__item">
+                        <span class="time">30 дней</span>
+                        <span class="percent">Ставка: 0%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="table__button">
+                <a href="#" class="main-btn">Получить займ</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
