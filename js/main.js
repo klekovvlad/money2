@@ -48,9 +48,43 @@ const options = {
     day: 'numeric',
   };
 dateItem.innerHTML = now.toLocaleString("ru", options);
+
+const requestHour = document.querySelectorAll('.adv-hour');
+const requestMin = document.querySelector('.adv-min');
+const successMin = document.querySelector('.adv-min-1');
+const moneyMin = document.querySelector('.adv-min-2');
+function timeUpdate() {
+    let timeAdv = new Date();
+    const optionsTimeMin = {
+        minute: 'numeric'
+    }
+    const optionsTimeHour = {
+        hour: 'numeric'
+    }
+    const currentHour = Number(timeAdv.toLocaleString('ru',optionsTimeHour));
+    const currentMin = Number(timeAdv.toLocaleString('ru',optionsTimeMin));
+    requestMin.innerHTML = currentMin;
+    requestHour.forEach(requestHourItem => {
+        successMin.innerHTML = currentMin + 5;
+        moneyMin.innerHTML = currentMin + 8;
+        requestHourItem.innerHTML = currentHour;
+        if(moneyMin.innerHTML >= 60) {
+            requestHour[2].innerHTML = currentHour + 1;
+            moneyMin.innerHTML = '08';
+        };
+        if(successMin.innerHTML >= 60) {
+            requestHour[1].innerHTML = currentHour + 1;
+            successMin.innerHTML = '02';
+        };
+    });
+    if(currentMin < 10) {
+        requestMin.innerHTML = "0" + currentMin;
+    }
+};
+timeUpdate();
+setInterval(timeUpdate, 1000);
 //Онлайн табло
 const process = document.querySelectorAll('.table__process');
-
 process.forEach(processItem => {
     function processStep() {
         processText = processItem.querySelector('.table__process-text');
@@ -76,8 +110,51 @@ process.forEach(processItem => {
         if(processIcon.length === 4) {
             processText.innerHTML = 'Получение денег'
         }
+        if(processIcon.length === 4) {
+            function successProcess() {
+                newSuccessIcon = document.createElement('div');
+                newSuccessIcon.classList.add('icon-success');
+                processDot.appendChild(newSuccessIcon);
+                newIcon.classList.add('icon-stop');
+                processIcon.forEach(processIconItem => {
+                    processIconItem.classList.add('icon-stop')
+                })
+            }
+            successProcess();
+        }
     }
     processStep();
     setInterval(processStep, 60000);
 });
+//Слайдер
+const swiper = new Swiper('.swiper', {
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-next',
+      prevEl: '.swiper-prev',
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+      720: {
+        slidesPerView: 2,
+        spaceBetween: 50
+      },
+      1028: {
+        slidesPerView: 3,
+        spaceBetween: 50
+      }
+    }
+  });
 
+//Меню
+const icon = document.querySelector('.header__menu-dotted');
+const menu = document.querySelector('.menu');
+
+icon.addEventListener('click', () => {
+    icon.classList.toggle('icon-open');
+    menu.classList.toggle('menu-show');
+
+});
