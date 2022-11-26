@@ -7,37 +7,57 @@ const allItem = document.querySelector('.calc_all');
 const persentFree = document.querySelector('.persent-free');
 const persentMed = document.querySelector('.persent-med');
 const persentPro = document.querySelector('.persent-pro');
+const calcMessage = document.querySelector('.calc__message');
+let x = 1;
 persentItem.innerHTML = persentFree.value;
 inputItem.value = 0;
+calcMessage.innerHTML = 'до 10 000 рублей';
 calcButton[0].addEventListener('click', () => {
     calcButton[0].classList.add('check');
     calcButton[1].classList.remove('check');
     calcButton[2].classList.remove('check');
     persentItem.innerHTML = persentFree.value;
+    calcMessage.innerHTML = 'до 10 000 рублей';
+    x = 1;
 });
 calcButton[1].addEventListener('click', () => {
     calcButton[1].classList.add('check');
     calcButton[0].classList.remove('check');
     calcButton[2].classList.remove('check');
     persentItem.innerHTML = persentMed.value;
+    calcMessage.innerHTML = 'до 30 000 рублей';
+    x = 2;
 });
 calcButton[2].addEventListener('click', () => {
     calcButton[2].classList.add('check');
     calcButton[1].classList.remove('check');
     calcButton[0].classList.remove('check');
     persentItem.innerHTML = persentPro.value;
+    calcMessage.innerHTML = 'до 100 000 рублей';
+    x = 3;
 });
 inputItem.addEventListener('click', () => {
     inputItem.value = '';
+    inputItem.classList.remove('input-error');
+    calcMessage.classList.remove('message-error');
 })
 inputItem.addEventListener('keyup', calculate);
+inputItem.addEventListener('keydown', resetstyle);
 function calculate() {
     inputItem.value = inputItem.value.replace(/[^\d]/g,'');
     moneyItem.innerHTML = inputItem.value;
     x1 = Number(moneyItem.innerHTML);
     x2 = Number(persentItem.innerHTML);
     allItem.innerHTML = (x1 + (x1 * x2 / 100)).toFixed(2);
-
+    if(x === 1 && inputItem.value > 10000 || x === 2 && inputItem.value > 30000 || x === 3 && inputItem.value > 100000) {
+        inputItem.classList.add('input-error');
+        calcMessage.classList.add('message-error');
+        inputItem.value = '';
+    };
+}
+function resetstyle() {
+    inputItem.classList.remove('input-error');
+    calcMessage.classList.remove('message-error');
 }
 setInterval(calculate, 1000)
 //Дата на главной
@@ -79,6 +99,12 @@ function timeUpdate() {
     });
     if(currentMin < 10) {
         requestMin.innerHTML = "0" + currentMin;
+    }
+    if(moneyMin < 10) {
+        moneyMin.innerHTML = "0" + moneyMin;
+    }
+    if(successMin < 10) {
+        moneyMin.innerHTML = "0" + successMin;
     }
 };
 timeUpdate();
@@ -122,6 +148,9 @@ process.forEach(processItem => {
             }
             successProcess();
         }
+        if(processIcon.length === 5) {
+            processText.innerHTML = 'Займ выдан'
+        }
     }
     processStep();
     setInterval(processStep, 60000);
@@ -152,9 +181,20 @@ const swiper = new Swiper('.swiper', {
 //Меню
 const icon = document.querySelector('.header__menu-dotted');
 const menu = document.querySelector('.menu');
-
+const menuLink = document.querySelectorAll('.menu > ul > li > a');
 icon.addEventListener('click', () => {
     icon.classList.toggle('icon-open');
     menu.classList.toggle('menu-show');
+});
+menuLink.forEach(menuItem => {
+    menuItem.addEventListener('click', () => {
+        menu.classList.remove('menu-show'); 
+        icon.classList.remove('icon-open');
+    })
+});
 
+const contactBtn = document.querySelector('.header__buttons-item');
+const contactMenu = document.querySelector('.header__buttons-menu');
+contactBtn.addEventListener('click', () => {
+    contactMenu.classList.toggle('header__menu-show');
 });

@@ -6,6 +6,7 @@
   padding: 0;
   font-family: 'Montserrat-Regular', sans-serif;
   font-weight: 400;
+  scroll-behavior: smooth;
 }
 a {
   text-decoration: none;
@@ -155,9 +156,10 @@ h3 {
   display: flex;
   align-items: center;
 }
-.header__logo img {
-  max-width: 60px;
-  margin-right: 20px;
+.header__logo svg {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
 }
 .header__logo span {
   display: block;
@@ -167,6 +169,49 @@ h3 {
   line-height: 100%;
   color: #fff;
   font-size: 2em;
+}
+.header__buttons {
+  position: relative;
+}
+.header__buttons-item {
+  cursor: pointer;
+}
+.header__buttons-item svg {
+  max-width: 30px;
+  max-height: 30px;
+}
+.header__buttons-menu {
+  position: absolute;
+  top: 50px;
+  right: 50%;
+  transform: translateX(50%);
+  background: #fff;
+  border-radius: 20px;
+  min-width: 200px;
+  border-radius: 1px solid #f4f4f4;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1), -4px -4px 20px rgba(0, 0, 0, 0.1);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s all linear;
+}
+.header__buttons-menu ul li {
+  border-bottom: 1px solid #f4f4f4;
+}
+.header__buttons-menu ul li a {
+  display: block;
+  padding: 30px;
+  transition: all 0.3s linear;
+}
+.header__buttons-menu ul li a:hover {
+  color: #fff;
+  background: #1F2671;
+}
+.header__buttons-menu ul li:last-child {
+  border-bottom: none;
+}
+.header__menu-show {
+  visibility: visible;
+  opacity: 1;
 }
 .menu {
   position: fixed;
@@ -263,8 +308,13 @@ h3 {
   border: 2px solid #1F2671;
   border-radius: 20px;
   outline: none;
-  margin-bottom: 50px;
   font-size: 1.25em;
+}
+.calc__message {
+  display: block;
+  margin: 10px auto 50px auto;
+  text-align: center;
+  font-size: 14px;
 }
 .calc__info {
   border: 1px solid #f4f4f4;
@@ -294,6 +344,24 @@ h3 {
 .check {
   background: #1F2671;
   color: #fff;
+}
+.input-error {
+  border: 2px solid red !important;
+  animation: error 0.1s linear;
+}
+.message-error {
+  color: red;
+}
+@keyframes error {
+  0% {
+    transform: translateX(-2px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(2px);
+  }
 }
 .manual {
   padding: 100px 0px;
@@ -617,12 +685,19 @@ h3 {
     max-width: 300px;
     margin: 0px auto;
   }
-  .header__logo img {
-    max-width: 50px;
-    margin-right: 20px;
+  .header__wrapper {
+    padding: 10px 0px;
+  }
+  .header__logo svg {
+    max-width: 40px;
+    margin-right: 10px;
   }
   .header__logo span {
-    font-size: 1.75em;
+    font-size: 1.5em;
+  }
+  .header__buttons-menu {
+    right: 5px;
+    transform: translateX(0%);
   }
   .menu {
     width: 80%;
@@ -636,10 +711,10 @@ h3 {
   }
   .main {
     min-height: 950px;
-    background-image: url(../img/banner-overlay.png), url(../img/banner-bg.png), url(../img/main-bg.png);
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-size: contain, contain, cover;
-    background-position: center bottom, center bottom, center;
+    background-image: url(../img/banner-overlay.png), url(../img/main-bg.png);
+    background-repeat: no-repeat, no-repeat;
+    background-size: contain, cover;
+    background-position: bottom, center;
   }
   .main__wrapper {
     padding-top: 150px;
@@ -759,27 +834,17 @@ h3 {
     font-size: 0.875em;
     margin-bottom: 10px;
   }
-  .table__process-icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .table__process-icons .icon {
-    width: 16px;
-    height: 16px;
-    border: 3px solid #1F2671;
-    margin: 0px 4px;
-    border-radius: 50%;
-    animation: processAnimate 1s infinite;
-  }
   .adv {
     padding: 60px 0px;
   }
   .adv__wrapper {
     padding: 30px 0px;
     max-width: none;
-    grid-row-gap: 20px;
+    grid-row-gap: 40px;
     grid-template-columns: repeat(2, 1fr);
+  }
+  .adv__item {
+    justify-content: flex-start;
   }
   .adv__item span.big {
     font-size: 1.75em;
@@ -787,5 +852,10 @@ h3 {
   }
   .adv__item span.small {
     text-align: center;
+  }
+  .footer__wrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
