@@ -10,14 +10,14 @@ const persentPro = document.querySelector('.persent-pro');
 const calcMessage = document.querySelector('.calc__message');
 let x = 1;
 persentItem.innerHTML = persentFree.value;
-inputItem.value = 0;
-calcMessage.innerHTML = 'до 10 000 рублей';
+inputItem.value = 3000;
+calcMessage.innerHTML = 'до 30 000 рублей';
 calcButton[0].addEventListener('click', () => {
     calcButton[0].classList.add('check');
     calcButton[1].classList.remove('check');
     calcButton[2].classList.remove('check');
     persentItem.innerHTML = persentFree.value;
-    calcMessage.innerHTML = 'до 10 000 рублей';
+    calcMessage.innerHTML = 'до 30 000 рублей';
     x = 1;
 });
 calcButton[1].addEventListener('click', () => {
@@ -25,7 +25,7 @@ calcButton[1].addEventListener('click', () => {
     calcButton[0].classList.remove('check');
     calcButton[2].classList.remove('check');
     persentItem.innerHTML = persentMed.value;
-    calcMessage.innerHTML = 'до 30 000 рублей';
+    calcMessage.innerHTML = 'до 60 000 рублей';
     x = 2;
 });
 calcButton[2].addEventListener('click', () => {
@@ -49,12 +49,20 @@ function calculate() {
     x1 = Number(moneyItem.innerHTML);
     x2 = Number(persentItem.innerHTML);
     allItem.innerHTML = (x1 + (x1 * x2 / 100)).toFixed(2);
-    if(x === 1 && inputItem.value > 10000 || x === 2 && inputItem.value > 30000 || x === 3 && inputItem.value > 100000) {
+    if(x === 1 && inputItem.value > 30000 || x === 2 && inputItem.value > 60000 || x === 3 && inputItem.value > 100000) {
         inputItem.classList.add('input-error');
         calcMessage.classList.add('message-error');
         inputItem.value = '';
     };
 }
+inputItem.addEventListener('blur', () => {
+    if(inputItem.value < 3000) {
+        inputItem.classList.add('input-error');
+        calcMessage.innerHTML = 'минимум 3000 рублей'
+        calcMessage.classList.add('message-error');
+        inputItem.value = ''; 
+    }
+})
 function resetstyle() {
     inputItem.classList.remove('input-error');
     calcMessage.classList.remove('message-error');
@@ -104,7 +112,7 @@ function timeUpdate() {
         moneyMin.innerHTML = "0" + moneyMin;
     }
     if(successMin < 10) {
-        moneyMin.innerHTML = "0" + successMin;
+        successMin.innerHTML = "0" + successMin;
     }
 };
 timeUpdate();
@@ -153,7 +161,7 @@ process.forEach(processItem => {
         }
     }
     processStep();
-    setInterval(processStep, 60000);
+    setInterval(processStep, 10000);
 });
 //Слайдер
 const swiper = new Swiper('.swiper', {
@@ -191,10 +199,4 @@ menuLink.forEach(menuItem => {
         menu.classList.remove('menu-show'); 
         icon.classList.remove('icon-open');
     })
-});
-
-const contactBtn = document.querySelector('.header__buttons-item');
-const contactMenu = document.querySelector('.header__buttons-menu');
-contactBtn.addEventListener('click', () => {
-    contactMenu.classList.toggle('header__menu-show');
 });

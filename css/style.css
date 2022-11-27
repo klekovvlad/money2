@@ -156,6 +156,10 @@ h3 {
   display: flex;
   align-items: center;
 }
+.header__logo a {
+  display: flex;
+  align-items: center;
+}
 .header__logo svg {
   width: 60px;
   height: 60px;
@@ -173,45 +177,9 @@ h3 {
 .header__buttons {
   position: relative;
 }
-.header__buttons-item {
-  cursor: pointer;
-}
-.header__buttons-item svg {
+.header__buttons a svg {
   max-width: 30px;
   max-height: 30px;
-}
-.header__buttons-menu {
-  position: absolute;
-  top: 50px;
-  right: 50%;
-  transform: translateX(50%);
-  background: #fff;
-  border-radius: 20px;
-  min-width: 200px;
-  border-radius: 1px solid #f4f4f4;
-  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1), -4px -4px 20px rgba(0, 0, 0, 0.1);
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.3s all linear;
-}
-.header__buttons-menu ul li {
-  border-bottom: 1px solid #f4f4f4;
-}
-.header__buttons-menu ul li a {
-  display: block;
-  padding: 30px;
-  transition: all 0.3s linear;
-}
-.header__buttons-menu ul li a:hover {
-  color: #fff;
-  background: #1F2671;
-}
-.header__buttons-menu ul li:last-child {
-  border-bottom: none;
-}
-.header__menu-show {
-  visibility: visible;
-  opacity: 1;
 }
 .menu {
   position: fixed;
@@ -663,14 +631,10 @@ h3 {
 .footer__wrapper a {
   color: #fff;
   font-size: 14px;
-  font-family: 'Montserrat-Light', sans-serif;
-  font-weight: 200;
 }
 .footer__wrapper span.copyright {
   font-size: 14px;
   color: #fff;
-  font-family: 'Montserrat-Light', sans-serif;
-  font-weight: 200;
 }
 .form__main {
   padding: 200px 0px;
@@ -708,6 +672,22 @@ h3 {
   padding: 10px 0px;
   position: relative;
 }
+.form__inputs-item span.safe {
+  display: block;
+  padding-left: 30px;
+  color: #1F2671;
+}
+.form__inputs-item span.safe:before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: url(../img/icons/purplesafe.svg) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .form__inputs-item label {
   display: block;
   font-size: 1.125em;
@@ -739,6 +719,7 @@ h3 {
 }
 .form__inputs .main-btn {
   margin: 30px auto 0px auto;
+  min-width: 100%;
 }
 .form__adv-item {
   display: flex;
@@ -773,10 +754,6 @@ h3 {
   }
   .header__logo span {
     font-size: 1.5em;
-  }
-  .header__buttons-menu {
-    right: 5px;
-    transform: translateX(0%);
   }
   .menu {
     width: 80%;

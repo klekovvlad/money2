@@ -160,6 +160,10 @@ h3 {
     &__logo {
         display: flex;
         align-items: center;
+        a {
+            display: flex;
+            align-items: center;
+        }
         svg {
             width: 60px;
             height: 60px;
@@ -175,49 +179,13 @@ h3 {
     }
     &__buttons {
         position: relative;
-        &-item {
+        a {
             svg {
                 max-width: 30px;
                 max-height: 30px;
             }
-            cursor: pointer;
-        }
-        &-menu {
-            position: absolute;
-            top: 50px;
-            right: 50%;
-            transform: translateX(50%);
-            background: #fff;
-            border-radius: 20px;
-            min-width: 200px;
-            border-radius: 1px solid #f4f4f4;
-            box-shadow: 4px 4px 20px rgba(0,0,0,0.1), -4px -4px 20px rgba(0,0,0,0.1);
-            visibility: hidden;
-            opacity: 0;
-            transition: 0.3s all linear;
-            ul {
-                li {
-                    border-bottom: 1px solid #f4f4f4;
-                    a {
-                        display: block;
-                        padding: 30px;
-                        transition: all 0.3s linear;
-                    }
-                    a:hover {
-                        color: #fff;
-                        background: @purple;
-                    }
-                }
-                li:last-child {
-                    border-bottom: none;
-                }
-            }
         }
     }
-}
-.header__menu-show {
-    visibility: visible;
-    opacity: 1;
 }
 .menu {
     position: fixed;
@@ -667,12 +635,10 @@ h3 {
         a {
             color: #fff;
             font-size: 14px;
-            .light();
         }
         span.copyright {
             font-size: 14px;
             color: #fff;
-            .light();
         }
     }
 }
@@ -713,6 +679,22 @@ h3 {
         &-item {
             padding: 10px 0px;
             position: relative;
+            span.safe {
+                display: block;
+                padding-left: 30px;
+                color: @purple;
+            }
+            span.safe:before {
+                content: '';
+                width: 20px;
+                height: 20px;
+                background: url(../img/icons/purplesafe.svg) no-repeat center;
+                background-size: cover;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
             label {
                 display: block;
                 font-size: 1.125em;
@@ -745,6 +727,7 @@ h3 {
         }
         .main-btn {
             margin: 30px auto 0px auto;
+            min-width: 100%;
         }
     }
     &__adv {
@@ -788,12 +771,6 @@ h3 {
             }
             span {
                 font-size: 1.5em;
-            }
-        }
-        &__buttons {
-            &-menu {
-                right: 5px;
-                transform: translateX(0%);
             }
         }
     }

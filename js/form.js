@@ -1,22 +1,3 @@
-const icon = document.querySelector('.header__menu-dotted');
-const menu = document.querySelector('.menu');
-const menuLink = document.querySelectorAll('.menu > ul > li > a');
-icon.addEventListener('click', () => {
-    icon.classList.toggle('icon-open');
-    menu.classList.toggle('menu-show');
-});
-menuLink.forEach(menuItem => {
-    menuItem.addEventListener('click', () => {
-        menu.classList.remove('menu-show'); 
-        icon.classList.remove('icon-open');
-    })
-});
-
-const contactBtn = document.querySelector('.header__buttons-item');
-const contactMenu = document.querySelector('.header__buttons-menu');
-contactBtn.addEventListener('click', () => {
-    contactMenu.classList.toggle('header__menu-show');
-});
 window.addEventListener("DOMContentLoaded", function() {
     [].forEach.call( document.querySelectorAll('#phone'), function(input) {
     var keyCode;
